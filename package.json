@@ -1,0 +1,52 @@
+{
+  "name": "AppsCurryExample3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha ./server/tests --require @babel/register",
+    "gas": "webpack --config ./server/webpack.gas.js ",
+    "build": "webpack --config ./client/webpack.dev.js ",
+    "local": "webpack-dev-server --config ./client/webpack.dev.js --open",
+    "prod": "webpack --config ./client/webpack.prod.js ",
+    "deploy": "npm run prod &&  npm run gas && cd deploy/gas && rm app.bundle.js && clasp push && clasp open --webapp"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "@babel/register": "^7.4.0",
+    "autoprefixer": "^9.5.0",
+    "babel-loader": "^8.0.5",
+    "bootstrap": "^4.3.1",
+    "chai": "^4.2.0",
+    "clean-webpack-plugin": "^2.0.1",
+    "copy-webpack-plugin": "^5.0.1",
+    "css-loader": "^2.1.1",
+    "html-webpack-inline-source-plugin": "0.0.10",
+    "html-webpack-plugin": "^3.2.0",
+    "jquery": "^3.3.1",
+    "mocha": "^6.1.3",
+    "node-sass": "^4.11.0",
+    "popper.js": "^1.15.0",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^7.1.0",
+    "sinon": "^7.3.1",
+    "style-loader": "^0.23.1",
+    "vue": "^2.6.10",
+    "vue-loader": "^15.7.0",
+    "vue-router": "^3.0.2",
+    "vue-template-compiler": "^2.6.10",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.2.1",
+    "webpack-merge": "^4.2.1"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.4.0",
+    "lodash": "^4.17.11",
+    "moment": "^2.24.0"
+  }
+}
