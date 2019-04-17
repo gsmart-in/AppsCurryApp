@@ -73,8 +73,18 @@ npm run prod
 
 will build the 'production' version that is ready to be uploaded to Apps Script. 
 
+
 ## Unit Tests
-See the 
+The server/tests folder contains the unit tests for the server side. 
+Run 
+```bash
+npm run test
+```
+to run the unit tests
+
+### Disclaimers
+The author does not represent nor associated with Google in any way. This is project is only for learning purposes.
+
 
 
 
