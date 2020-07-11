@@ -4,13 +4,25 @@ function doGet() {
 		.evaluate();
 }
 
-function getNameOfSpreadsheet(spreadsheetId) {
-	var ssName = SpreadsheetApp.openById(spreadsheetId).getName()
+function getSpreadsheetDetails(spreadsheetId) {
+	var result = {}
+	var ss = SpreadsheetApp.openById(spreadsheetId); 
+
+	// Name
+	var ssName = ss.getName()
 	// remove (Responses)
 	ssName = ssName.split("(")
 	ssName = ssName[0]
-	console.log("ssName: " + ssName)
-	return ssName
+	result.ssName = ssName
+
+	// Form Url
+	var formUrl = ss.getFormUrl();
+	result.formUrl = formUrl
+
+	// Active User Email
+	result.activeUser = getActiveUser()
+
+	return result
 }
 
 function getActiveUser() {
@@ -19,19 +31,19 @@ function getActiveUser() {
 
 function getRequestApp() {
 	var spreadsheetId = params.SPREADSHEET_ID
-	var nameOfSpreadsheet = getNameOfSpreadsheet(spreadsheetId)
+	var spreadsheetDetails = getSpreadsheetDetails(spreadsheetId)
 	var activeUser = getActiveUser()
 	console.log("activeUser: " + activeUser)
 	var header_values = getHeaderNames(spreadsheetId)
 	console.log("header_values: " + header_values)
-	return new AppLib.RequestsApp('https://docs.google.com/spreadsheets/d/' + spreadsheetId + '/edit', header_values, nameOfSpreadsheet, activeUser);
+	return new AppLib.RequestsApp('https://docs.google.com/spreadsheets/d/' + spreadsheetId + '/edit', header_values, spreadsheetDetails, activeUser);
 }
 
 function loadRequests() {
 	return getRequestApp().getNewRequests();
 }
-function getSpreadsheetName() {
-	return getRequestApp().getSpreadsheetName();
+function spreadsheetDetails() {
+	return getRequestApp().spreadsheetDetails();
 }
 
 function requestDetails(id) {

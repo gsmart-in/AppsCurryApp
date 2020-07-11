@@ -81,6 +81,12 @@ body{
     }
 }
 
+.signed-in{
+    padding: 20px;
+}
+.active-user{
+    font-weight: bold;
+}
 
 #sidebar.active {
     margin-left: -250px;
@@ -92,7 +98,7 @@ body{
 }
 
 #sidebar ul.components {
-    padding: 20px 0;
+    padding: 20px 10px;
     // border-bottom: 1px solid #47748b;
 }
 

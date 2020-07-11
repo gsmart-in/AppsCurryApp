@@ -19,8 +19,8 @@ class BackEndWrapper
 	loadRequests() {
 		return this.real.loadRequests();
 	}
-	getSpreadsheetName() {
-		return this.real.getSpreadsheetName();
+	spreadsheetDetails() {
+		return this.real.spreadsheetDetails();
 	}
 	requestDetails(id)
 	{

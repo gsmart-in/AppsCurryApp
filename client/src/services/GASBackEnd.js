@@ -16,14 +16,14 @@ class GASBackEnd
 				}).loadRequests();
 		});
 	}
-	getSpreadsheetName() {
+	spreadsheetDetails() {
 		return new Promise(function (resolve, reject) {
 			google.script.run.withSuccessHandler(function (res) {
 				resolve(res);
 			})
 				.withFailureHandler(function () {
 					reject();
-				}).getSpreadsheetName();
+				}).spreadsheetDetails();
 		});
 	}
 	requestDetails(id)

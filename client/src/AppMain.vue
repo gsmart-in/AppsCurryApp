@@ -3,15 +3,16 @@
 		<!-- Sidebar  -->
 		<nav id="sidebar">
 		    <div class="sidebar-header">
-		        <h3>{{spreadsheetName}}</h3>
+		        <h3>{{spreadsheet_details.ssName}}</h3>
 		    </div>
+				<p class="signed-in">Signed in as:</br>
+					<span class="active-user">{{spreadsheet_details.activeUser}}</span>
+				</p>
 		    <ul class="list-unstyled components">
 		        <li><router-link to="/"> Open Requests</router-link></li>
 		        <li><router-link to="/closed"> Closed Requests</router-link></li>
 		        <li><router-link to="/cancelled"> Cancelled Requests</router-link></li>
-		        <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScZOxRJCeGo-j-op14XWX0bGfqutknUjpUuZkGra-AxUI6l7g/viewform" target="_blank"> New Request</a></li>
-
-		        <!-- <li><router-link to="/new"> New Request</router-link></li> -->
+		        <li><a v-bind:href='spreadsheet_details.formUrl' target="_blank"> New Request</a></li>
 		    </ul>
 		</nav>
 		<!-- Page Content  -->
@@ -29,19 +30,18 @@ export default {
 	data(){
   	return ({
   		bw:new BackEndWrapper(),
-  		spreadsheetName:''
+  		spreadsheet_details:{}
   	});
   },
   mounted(){
-    this.getSpreadsheetName();
+    this.spreadsheetDetails();
   },
   methods: {
-  	getSpreadsheetName()
+  	spreadsheetDetails()
   	{
-	  	this.bw.getSpreadsheetName().then(function(res)
+	  	this.bw.spreadsheetDetails().then(function(res)
 	  	{
-        console.log('spreadsheetName ', res);
-	  		this.spreadsheetName = res;
+	  		this.spreadsheet_details = res;
 	  	}.bind(this), 
 	  	function(err)
         {

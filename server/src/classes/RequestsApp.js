@@ -3,7 +3,7 @@ import SpreadsheetDB from './SpreadsheetDB.js';
 
 class RequestsApp
 {
-	constructor( spreadsheet_url, header_values, spreadsheet_name, activeUser )
+	constructor( spreadsheet_url, header_values, spreadsheet_details, activeUser )
 	{
 		//this.spreadsheet_url = 
 		//'https://docs.google.com/spreadsheets/d/1k-zN8IfrkC34jEXam9KoNXzpYzCp0ro_h9hPFZZ7Fe4/edit';
@@ -14,7 +14,7 @@ class RequestsApp
 		});
 
 		this.activeUser = activeUser
-		this.spreadsheet_name = spreadsheet_name
+		this.spreadsheet_details = spreadsheet_details
 			// [
 			// 	'id',
 			// 	'shared_folder',
@@ -34,8 +34,8 @@ class RequestsApp
 			// ]
 	}
 
-	getSpreadsheetName() {
-		return this.spreadsheet_name;
+	spreadsheetDetails() {
+		return this.spreadsheet_details;
 	}
 
 	getNewRequests()
