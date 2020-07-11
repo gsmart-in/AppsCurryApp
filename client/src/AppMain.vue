@@ -12,10 +12,13 @@
 		        <li><router-link to="/"> Open Requests</router-link></li>
 		        <li><router-link to="/closed"> Closed Requests</router-link></li>
 		        <li><router-link to="/cancelled"> Cancelled Requests</router-link></li>
+<<<<<<< HEAD
 		        <li><a v-bind:href='spreadsheet_details.formUrl' target="_blank"> New Request</a></li>
+=======
+		        <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScZOxRJCeGo-j-op14XWX0bGfqutknUjpUuZkGra-AxUI6l7g/viewform" target="_blank"> New Request</a></li>
+>>>>>>> 3dda63b6082e789e0d462b1b008ba25a4e191872
 		    </ul>
 		</nav>
-		<!-- Page Content  -->
 		<div id="content">
 			<router-view></router-view>
 		</div>
@@ -45,8 +48,6 @@ export default {
 	  	}.bind(this), 
 	  	function(err)
         {
-          //this.showError();
-
         }.bind(this));	
   	}
   	
