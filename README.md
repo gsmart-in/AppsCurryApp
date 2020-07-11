@@ -1,6 +1,5 @@
-# AppsCurryApp
-This is a sample app showing the potential of Apps Script to create complete (server/client) web apps.
-This sample app is a Request Management App, where the users can submit their purchase requests. The requests are saved to a Google Sheet 'Back End'. The requests can be 'approved' or 'declined'.
+# Request Management App
+This  app is a Request Management App, to be used as a UI for a Google Form's spreadsheet. The requests can be 'Closed' or 'Cancelled'.
 
 The front-end (client side) uses VueJS and Bootstrap. The back-end uses ES6 Javascript that gets compiled and bundled to Apps Script compatible code using webpack.
 
@@ -33,18 +32,6 @@ Now build the project and upload to your newly created Apps Script project
 npm install
 npm run deploy
 ```
-## Local development
-
-You don't have to upload the project everytime to see the changes.
-run:
-
-```bash
-npm run local
-```
-This will open a http://localhost:9090/ where you can view your development site.
-
-In order to Mock the responses from your Google Apps Script API, update client/src/services/MockBackEnd.js
-
 ## Project Structure
 
 The client/src/pages contains the partial pages. See src/pages/routes.js where the routes are configured.
@@ -62,29 +49,7 @@ You can see the client side setup in the client/webpack.prod.js
 ## Building the project
 
 ```bash
-npm run build
-```
-
-will build the local development version. The output files are placed in deploy/local folder.
-
-```bash
 npm run prod
 ```
 
 will build the 'production' version that is ready to be uploaded to Apps Script. 
-
-
-## Unit Tests
-The server/tests folder contains the unit tests for the server side. 
-Run 
-```bash
-npm run test
-```
-to run the unit tests
-
-### Disclaimers
-The author does not represent nor associated with Google in any way. This is project is only for learning purposes.
-
-
-
-

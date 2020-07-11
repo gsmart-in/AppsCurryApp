@@ -1,11 +1,3 @@
-// Production params
-var params = {
-	TRELLO_KEY: '04eda3a7ccbd24488df107eaed0015f5', // Digital Marketing Services
-	TRELLO_TOKEN: '62a99f482e7e6125042aaee38a64ea8d342a105878ef6c531e41ada16821defc', // Digital Marketing Services,
-	SPREADSHEET_ID: '1-eleygctRFceOXqqPojCledCXihYeKkWdDqmc4TBy0o' // Prod
-	// SPREADSHEET_ID: '1fLdveKjlPLPsD8BxVEVelADHEhhJiBpuw-VZ2kVRYz8' // Dev
-};
-
 function doGet() {
 	return HtmlService
 		.createTemplateFromFile('index')
