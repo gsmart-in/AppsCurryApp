@@ -19,20 +19,27 @@ class ColumnNames
 	}
 	makeJsonOneRow(row)
 	{
+		console.log("makeJsonOneRow: ")
+		console.log("row: " + row)
 		let rec = { };
 		for(let col=0; col < row.length; col++ )
 		{
 			rec[this.column_names[col]] = row[col];
 		}
+		console.log("rec: " + rec)
+
 		return rec;
 	}
 	makeJson(datamx,start=0)
 	{
+		console.log("makeJson: ")
+		console.log("datamx: " + datamx)
 		let ret=[];
 		for(let row = start; row < datamx.length; row++)
 		{
 			ret.push(this.makeJsonOneRow(datamx[row]) );
 		}
+		console.log("ret: " + JSON.stringify(ret))
 		return ret;
 	}
 	

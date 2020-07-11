@@ -6,18 +6,24 @@ class GASBackEnd
 	{
 
 	}
-	loadRequests()
-	{
-		return new Promise(function(resolve,reject) 
-		{
-			google.script.run.withSuccessHandler(function(res)
-			{
+	loadRequests() {
+		return new Promise(function (resolve, reject) {
+			google.script.run.withSuccessHandler(function (res) {
 				resolve(res);
 			})
-			.withFailureHandler(function()
-			{
-				reject();
-			}).loadRequests();
+				.withFailureHandler(function () {
+					reject();
+				}).loadRequests();
+		});
+	}
+	getSpreadsheetName() {
+		return new Promise(function (resolve, reject) {
+			google.script.run.withSuccessHandler(function (res) {
+				resolve(res);
+			})
+				.withFailureHandler(function () {
+					reject();
+				}).getSpreadsheetName();
 		});
 	}
 	requestDetails(id)
@@ -46,6 +52,26 @@ class GASBackEnd
 			{
 				reject();
 			}).approveRequest(id);
+		});
+	}
+	closeRequest(id) {
+		return new Promise(function (resolve, reject) {
+			google.script.run.withSuccessHandler(function (res) {
+				resolve(res);
+			})
+				.withFailureHandler(function () {
+					reject();
+				}).closeRequest(id);
+		});
+	}
+	cancelRequest(id) {
+		return new Promise(function (resolve, reject) {
+			google.script.run.withSuccessHandler(function (res) {
+				resolve(res);
+			})
+				.withFailureHandler(function () {
+					reject();
+				}).cancelRequest(id);
 		});
 	}
 	rejectRequest(id)
@@ -88,6 +114,26 @@ class GASBackEnd
 			{
 				reject();
 			}).approvedRequests();
+		});
+	}
+	closedRequests() {
+		return new Promise(function (resolve, reject) {
+			google.script.run.withSuccessHandler(function (res) {
+				resolve(res);
+			})
+				.withFailureHandler(function () {
+					reject();
+				}).closedRequests();
+		});
+	}
+	cancelledRequests() {
+		return new Promise(function (resolve, reject) {
+			google.script.run.withSuccessHandler(function (res) {
+				resolve(res);
+			})
+				.withFailureHandler(function () {
+					reject();
+				}).cancelledRequests();
 		});
 	}
 

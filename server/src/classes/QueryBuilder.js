@@ -21,15 +21,23 @@ class QueryBuilder
 		}
 		return this;
 	}
-	where(col_name,cmp, value)
+	where(col_name, cmp, value, col_name2, cmp2, value2)
 	{
-		if(typeof value === 'undefined')
-		{
-			value = cmp;
-			cmp ='=';
+		if(typeof value === 'undefined'){
+			this._append_where(col_name, "=", cmp, 'AND');
+		} else{
+			this._append_where(col_name, "=", cmp, 'AND');
+			this._append_where(col_name, "=", value, 'OR');
 		}
-		this._append_where(col_name,cmp, value,'AND');
-		
+
+		// add additional filters functionality
+		if (typeof value2 === 'undefined') {
+			this._append_where(col_name2, '=', cmp2, 'AND');
+		} else {
+			this._append_where(col_name2, "=", cmp2, 'AND');
+			this._append_where(col_name2, "=", value2,'OR');
+		}
+		// this.where_clause = "(" + this.where_clause + ")"
 		return this;
 	}
 	orWhere(col_name,cmp, value)
@@ -47,9 +55,16 @@ class QueryBuilder
 		if(this.where_clause.length > 0)
 		{
 			this.where_clause += ' '+combine+' ';
+			// this.where_clause = "(" + this.where_clause + ' ' + combine + ' ';
 		}
-		this.where_clause +=  this._col_label(col_name) + cmp + make_value(value);
+		this.where_clause +=  this._col_label(col_name) + cmp + make_value(value) ;
+
+		if (this.where_clause.length > 0) {
+			this.where_clause = "(" + this.where_clause + ")"
+
+		}
 	}
+
 	_col_label(col_name)
 	{
 		return this.options.column_names.getColLabel(col_name);

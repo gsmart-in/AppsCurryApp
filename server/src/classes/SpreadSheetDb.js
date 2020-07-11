@@ -20,18 +20,15 @@ class SpreadsheetDB
 		this.open(options);
 	}
 
-	open(options)
-	{
+	open(options) {
 		Object.assign(this.options, this.defaults, options);
 
-		if(this.options.source_url)
-		{
+		if (this.options.source_url) {
 			this.spreadsheet = SpreadsheetApp.openByUrl(this.options.source_url);
 			this.sheet = this.spreadsheet.getSheets()[0];
 		}
 
-		if(!this.options.column_names)
-		{
+		if (!this.options.column_names) {
 			this.options.column_names = this.getHeaderRow();
 		}
 
@@ -64,6 +61,7 @@ class SpreadsheetDB
 		}
 		catch(e)
 		{
+			console.log("error in getRowValues: " + e)
 			return [];
 		}
 	}
@@ -74,6 +72,9 @@ class SpreadsheetDB
 	 */
 	getDataJSON(range=null)
 	{
+		console.log("getDataJSON: ")
+		console.log("range: " + range)
+
 		let datamx = [];
 		let start=0;
 		if(!range)
@@ -85,7 +86,8 @@ class SpreadsheetDB
 		{
 			datamx = this.sheet.getRange(range).getValues();	
 		}
-		
+		console.log("this.options.column_names.makeJson(datamx): " + this.options.column_names.makeJson(datamx))
+
 		return(this.options.column_names.makeJson(datamx));
 		/*let ret=[];
 		for(let row= start; row<datamx.length; row++)
@@ -108,8 +110,11 @@ class SpreadsheetDB
 
 	getRowDataById(id)
 	{
+		console.log("getRowDataById")
+		console.log("id: " + id)
 		let row = this.findRowById(id);
 		
+		console.log("row: " + row)
 		let result = this.getDataJSON(row+':'+row);
 		if(result && result.length)
 		{
@@ -118,6 +123,8 @@ class SpreadsheetDB
 				return result[0];	
 			}
 		}
+		console.log("result: " + result)
+
 		return result;
 	}
 	

@@ -16,9 +16,11 @@ class BackEndWrapper
 		}
 	}
 
-	loadRequests()
-	{
+	loadRequests() {
 		return this.real.loadRequests();
+	}
+	getSpreadsheetName() {
+		return this.real.getSpreadsheetName();
 	}
 	requestDetails(id)
 	{
@@ -27,6 +29,12 @@ class BackEndWrapper
 	approveRequest(id)
 	{
 		return this.real.approveRequest(id);
+	}
+	closeRequest(id) {
+		return this.real.closeRequest(id);
+	}
+	cancelRequest(id) {
+		return this.real.cancelRequest(id);
 	}
 	rejectRequest(id)
 	{
@@ -39,6 +47,12 @@ class BackEndWrapper
 	approvedRequests()
 	{
 		return this.real.approvedRequests();
+	}
+	closedRequests() {
+		return this.real.closedRequests();
+	}
+	cancelledRequests() {
+		return this.real.cancelledRequests();
 	}
 };
 
