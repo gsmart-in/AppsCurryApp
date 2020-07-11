@@ -10,11 +10,8 @@
 		        <li><router-link to="/closed"> Closed Requests</router-link></li>
 		        <li><router-link to="/cancelled"> Cancelled Requests</router-link></li>
 		        <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScZOxRJCeGo-j-op14XWX0bGfqutknUjpUuZkGra-AxUI6l7g/viewform" target="_blank"> New Request</a></li>
-
-		        <!-- <li><router-link to="/new"> New Request</router-link></li> -->
 		    </ul>
 		</nav>
-		<!-- Page Content  -->
 		<div id="content">
 			<router-view></router-view>
 		</div>
@@ -45,8 +42,6 @@ export default {
 	  	}.bind(this), 
 	  	function(err)
         {
-          //this.showError();
-
         }.bind(this));	
   	}
   	

@@ -5,6 +5,7 @@ The front-end (client side) uses VueJS and Bootstrap. The back-end uses ES6 Java
 
 This project is intended only as a proof-of-concept and there is no performance optimization. The app will be slow because of the inefficiencies. 
 
+
 ## Usage
 
 Install clasp command line tool (if you don't have it already)
@@ -45,11 +46,3 @@ api.js exposes the Apps Script API that the client side calls (see client/src/se
 In the front end, it uses webpack and babel to cross compile and generate the bundle.
 Then it uses html-webpack-inline-source-plugin to inline the whole Javascript and CSS in to the generated index.html file.
 You can see the client side setup in the client/webpack.prod.js 
-
-## Building the project
-
-```bash
-npm run prod
-```
-
-will build the 'production' version that is ready to be uploaded to Apps Script. 

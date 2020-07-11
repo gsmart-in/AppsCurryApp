@@ -8,7 +8,6 @@
         <th>Status</th>
         <th>Due Date</th>
         <th>Assignee(s)</th>
-        <!-- <th>Date Submitted</th> -->
       </tr>
     </thead>
     <tbody>
