@@ -11,21 +11,18 @@
 	<table class="table table-striped">
     <thead>
       <tr>
+      	<th>Job Number</th>
       	<th>Project Name</th>
         <th>Status</th>
         <th>Due Date</th>
-        <th>Assignee(s)</th>
-        <!-- <th>Date Submitted</th> -->
       </tr>
     </thead>
     <tbody>
       <tr v-for="request in requests">
-        <!-- <td><a :href="'https:'+request.brief_url">{{request.unique_project_name}}</a></td> -->
-        <td><router-link :to="{name:'detail', params:{ id:request.job_number } }">{{request.unique_project_name}}</router-link></td>
-
+      	<td>{{request.job_number}}</td>
+        <td><router-link :to="{name:'detail', params:{ id:request.job_number } }">{{request.project_name}}</router-link></td>
       	<td>{{request.status}}</td>
-      	<td>{{request.when_does_your_request_need_to_be_completed}}</td>
-        <td><a :href=" 'mailto:' +request.resource">{{request.resource}}</a></td>
+      	<td>{{request.due_date}}</td>
       </tr>
     </tbody>
   </table>

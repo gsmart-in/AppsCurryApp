@@ -4,9 +4,10 @@ function doGet() {
 		.evaluate();
 }
 
-function getSpreadsheetDetails(spreadsheetId) {
+function getSpreadsheetDetails() {
 	var result = {}
-	var ss = SpreadsheetApp.openById(spreadsheetId); 
+	var ss = SpreadsheetApp.getActiveSpreadsheet();
+
 
 	// Name
 	var ssName = ss.getName()
@@ -30,7 +31,8 @@ function getActiveUser() {
 }
 
 function getRequestApp() {
-	var spreadsheetId = params.SPREADSHEET_ID
+	var spreadsheetId = SpreadsheetApp.getActiveSpreadsheet().getId()
+
 	var spreadsheetDetails = getSpreadsheetDetails(spreadsheetId)
 	var activeUser = getActiveUser()
 	console.log("activeUser: " + activeUser)
@@ -108,7 +110,7 @@ function updateTrelloCardParamater(trelloCardId, cardParameter) {
 	var cardData = {};
 	cardData[cardParameter] = true;
 
-	var updateTrelloCardAPIUrl = 'https://api.trello.com/1/cards/' + cardId + '/?key=' + params.TRELLO_KEY + '&token=' + params.TRELLO_TOKEN
+	var updateTrelloCardAPIUrl = 'https://api.trello.com/1/cards/' + cardId + '/?key=' + TRELLO_KEY + '&token=' + TRELLO_TOKEN
 
 	var options = {
 		"method": "put",

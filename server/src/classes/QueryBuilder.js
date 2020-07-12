@@ -40,6 +40,15 @@ class QueryBuilder
 		// this.where_clause = "(" + this.where_clause + ")"
 		return this;
 	}
+	whereStatus(col_name, cmp, value) {
+		if (typeof value === 'undefined') {
+			this._append_where(col_name, "=", cmp, 'AND');
+		} else {
+			this._append_where(col_name, "=", cmp, 'AND');
+			this._append_where(col_name, "=", value, 'OR');
+		}
+		return this;
+	}
 	orWhere(col_name,cmp, value)
 	{
 		if(typeof value === 'undefined')

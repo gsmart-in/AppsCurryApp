@@ -37,6 +37,14 @@ module.exports = {
   },
   plugins: [
     new CopyPlugin([
+        'server/src/onFormSubmit.js',
+        'server/src/requestFolder.js',
+        'server/src/generateTrelloCard.js',
+        'server/src/trelloUpdates.js',
+        'server/src/brief.js',
+        'server/src/emails.js',
+        'server/src/detectUnprocessedRequest.js',
+        'server/src/utils.js',
         'server/src/api.js',
         'appsscript.json',
         '.clasp.json'

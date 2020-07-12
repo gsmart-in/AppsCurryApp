@@ -15,23 +15,7 @@ class RequestsApp
 
 		this.activeUser = activeUser
 		this.spreadsheet_details = spreadsheet_details
-			// [
-			// 	'id',
-			// 	'shared_folder',
-			// 	'trello_card_id',
-			// 	'resource',
-			// 	'resource_trello_ids',
-			// 	'status',
-			// 	'due_date',
-			// 	'trello_card_url',
-			// 	'trello_card_data',
-			// 	'unique_project_name',
-			// 	'brief_url',
-			// 	'timestamp',
-			// 	'email_address',
-			// 	// 'cc',
-			// 	// 'project_name',
-			// ]
+
 	}
 
 	spreadsheetDetails() {
@@ -40,8 +24,7 @@ class RequestsApp
 
 	getNewRequests()
 	{
-		//this.db.query.where('status','new').results().json()
-		return this.db.query.where('status', 'In Progress', "Pending Review", 'email_address', this.activeUser,undefined).getResultsJson();
+		return this.db.query.whereStatus('status', 'In Progress', "Pending Review").getResultsJson();
 	}
 	requestDetails(id)
 	{
@@ -108,12 +91,12 @@ class RequestsApp
 
 	closedRequests() {
 		// return this.db.query.where('status', 'Done').getResultsJson();
-		return this.db.query.where('status', 'Done', undefined, 'email_address', this.activeUser, undefined).getResultsJson();
+		return this.db.query.whereStatus('status', 'Done', undefined).getResultsJson();
 
 	}
 	cancelledRequests() {
 		// return this.db.query.where('status', 'Cancelled').getResultsJson();
-		return this.db.query.where('status', 'Cancelled', undefined, 'email_address', this.activeUser, undefined).getResultsJson();
+		return this.db.query.whereStatus('status', 'Archived', undefined).getResultsJson();
 
 	}
 	_getJSONResult(res)
