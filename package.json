@@ -47,6 +47,6 @@
   "dependencies": {
     "@babel/polyfill": "^7.4.0",
     "lodash": "^4.17.21",
-    "moment": "^2.24.0"
+    "moment": "^2.29.2"
   }
 }
